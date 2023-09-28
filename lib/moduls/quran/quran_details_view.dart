@@ -1,3 +1,4 @@
+import 'package:application_islami/core/theme/application_theme.dart';
 import 'package:application_islami/moduls/quran/quran_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,7 +25,9 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/default_bg.png"),
+              image: AssetImage(ApplicationTheme.isDark
+                  ? "assets/images/dark_bg.png"
+                  : "assets/images/default_bg.png"),
               fit: BoxFit.cover)),
       child: Scaffold(
         appBar: AppBar(
@@ -36,7 +39,7 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
           width: mediaQuery.width,
           height: mediaQuery.height,
           decoration: BoxDecoration(
-              color: Color(0xffF8F8F8).withOpacity(0.8),
+              color: theme.colorScheme.primary.withOpacity(0.6),
               borderRadius: BorderRadius.circular(25)),
           child: Column(
             children: [
@@ -44,7 +47,8 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("سورة ${arguments.suraName}",
-                      style: theme.textTheme.bodyLarge),
+                      style: theme.textTheme.bodyLarge!
+                          .copyWith(color: theme.colorScheme.primary)),
                   SizedBox(
                     width: 10,
                   ),

@@ -1,3 +1,4 @@
+import 'package:application_islami/core/theme/application_theme.dart';
 import 'package:application_islami/moduls/hadeth/hadeth_view.dart';
 import 'package:application_islami/moduls/quran/quran_view.dart';
 import 'package:application_islami/moduls/radio/radio_view.dart';
@@ -29,7 +30,9 @@ class _HomePageState extends State<HomePage> {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/default_bg.png"),
+              image: AssetImage(ApplicationTheme.isDark
+                  ? "assets/images/dark_bg.png"
+                  : "assets/images/default_bg.png"),
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -38,12 +41,12 @@ class _HomePageState extends State<HomePage> {
         ),
         body: screens[selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
+          currentIndex: selectedIndex,
           onTap: (int index) {
             setState(() {
               selectedIndex = index;
             });
           },
-          currentIndex: selectedIndex,
           items: const [
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/icon_quran@3x.png")),

@@ -130,7 +130,6 @@ class QuranView extends StatelessWidget {
         Image.asset("assets/images/qur2an_screen_logo.png"),
         Divider(
             thickness: 2.2,
-            color: theme.primaryColor,
             endIndent: 10,
             indent: 10,
             height: 5),
@@ -146,7 +145,7 @@ class QuranView extends StatelessWidget {
             Container(
               width: 1.2,
               height: 45,
-              color: theme.primaryColor,
+              color: theme.colorScheme.onSecondary,
             ),
             Expanded(
                 child: Text("اسم السورة",
@@ -156,7 +155,6 @@ class QuranView extends StatelessWidget {
         ),
         Divider(
             thickness: 2.2,
-            color: theme.primaryColor,
             endIndent: 10,
             indent: 10,
             height: 5),

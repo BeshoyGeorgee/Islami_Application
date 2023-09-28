@@ -1,3 +1,4 @@
+import 'package:application_islami/moduls/hadeth/hadeth_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,7 +23,6 @@ class _HadethViewState extends State<HadethView> {
           thickness: 2.5,
           endIndent: 20,
           indent: 20,
-          color: theme.primaryColor,
           height: 10,
         ),
         Text(
@@ -33,13 +33,18 @@ class _HadethViewState extends State<HadethView> {
           thickness: 2.5,
           endIndent: 20,
           indent: 20,
-          color: theme.primaryColor,
           height: 10,
         ),
         Expanded(
           child: ListView.builder(
-            itemBuilder: (context, index) =>
-                Text(allHadethContent[index].title),
+            itemBuilder: (context, index) => GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, HadethDetailsView.routName,
+                      arguments: HadethContent(
+                          content: allHadethContent[index].content,
+                          title: allHadethContent[index].title));
+                },
+                child: Text(allHadethContent[index].title)),
             itemCount: allHadethContent.length,
           ),
         ),
@@ -58,8 +63,10 @@ class _HadethViewState extends State<HadethView> {
       String content = singleHadeth.substring(indexOfFirstLine + 1);
       HadethContent hadethContent =
           HadethContent(content: content, title: title);
-      allHadethContent.add(hadethContent);
-      setState(() {});
+
+      setState(() {
+        allHadethContent.add(hadethContent);
+      });
 
       print(title);
     }
